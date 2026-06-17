@@ -1,7 +1,7 @@
 {
-  "name": "Super App Musholla Nurul Haq",
+  "name": "Aplikasi Musholla Nurul Haq",
   "short_name": "Nurul Haq",
-  "description": "Aplikasi Pusat Ibadah & Pendidikan Ilmu Agama",
+  "description": "Pusat Ibadah & Pendidikan Al-Qur'an",
   "start_url": "./",
   "display": "standalone",
   "orientation": "portrait",
