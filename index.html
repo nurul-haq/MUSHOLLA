@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
     <title>Musholla Nurul Haq</title>
     
@@ -21,44 +21,47 @@
 
     <style>
         /* =========================================
-           1. DESAIN SPLASH SCREEN SUPER PREMIUM
+           1. DESAIN SPLASH SCREEN ULTRA-PREMIUM
            ========================================= */
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #022c22; font-family: 'Plus Jakarta Sans', sans-serif; }
         
         #splash-screen {
             position: fixed; inset: 0; display: flex; flex-direction: column;
             justify-content: center; align-items: center; z-index: 20000;
-            background: url('https://www.transparenttextures.com/patterns/arabesque.png'), linear-gradient(135deg, #022c22 0%, #064e3b 100%);
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+            background: url('https://www.transparenttextures.com/patterns/arabesque.png'), radial-gradient(circle at center, #064e3b 0%, #022c22 100%);
+            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s;
             overflow: hidden;
         }
 
         #splash-screen::after {
             content: ''; position: absolute; inset: 0;
-            background: radial-gradient(circle at center, transparent 0%, rgba(2, 44, 34, 0.8) 100%);
+            background: linear-gradient(to bottom, rgba(2, 44, 34, 0.3) 0%, rgba(2, 44, 34, 0.9) 100%);
             pointer-events: none;
         }
 
-        .splash-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; animation: slideUpFade 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        .splash-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; animation: slideUpFade 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
         
-        /* Wadah Logo Mewah */
-        .logo-wrapper { position: relative; width: 140px; height: 140px; margin-bottom: 30px; }
-        .modern-spinner { position: absolute; inset: -8px; border-radius: 50%; border: 2px solid rgba(250, 204, 21, 0.1); border-top-color: #facc15; border-right-color: #facc15; animation: spinRing 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; filter: drop-shadow(0 0 5px rgba(250, 204, 21, 0.5)); }
-        .splash-logo { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); animation: breatheLogo 3s ease-in-out infinite; border: 2px solid rgba(255,255,255,0.1); }
+        /* Wadah Logo Mewah dengan Spinner Ganda (3D Effect) */
+        .logo-wrapper { position: relative; width: 140px; height: 140px; margin-bottom: 35px; }
+        .modern-spinner { position: absolute; inset: -10px; border-radius: 50%; border: 2px solid rgba(250, 204, 21, 0.05); border-top-color: #facc15; border-right-color: transparent; animation: spinRing 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.6)); }
+        .modern-spinner-inner { position: absolute; inset: -2px; border-radius: 50%; border: 2px solid rgba(16, 185, 129, 0.1); border-bottom-color: #10b981; border-left-color: transparent; animation: spinRingReverse 2s linear infinite; }
+        
+        .splash-logo { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); animation: breatheLogo 3s ease-in-out infinite; border: 3px solid rgba(255,255,255,0.15); position: relative; z-index: 5; background: #fff; }
         
         /* Teks Mewah */
-        .brand-title { color: #facc15; font-family: 'Cinzel', serif; font-size: 28px; font-weight: 900; letter-spacing: 2px; margin: 0 0 8px 0; text-shadow: 0 4px 15px rgba(0,0,0,0.6); text-align: center; }
-        .brand-subtitle { color: #ffffff; font-size: 11px; font-weight: 700; letter-spacing: 4px; margin: 0; text-transform: uppercase; opacity: 0.8; background: rgba(255,255,255,0.1); padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px); }
+        .brand-title { color: #facc15; font-family: 'Cinzel', serif; font-size: 30px; font-weight: 900; letter-spacing: 2px; margin: 0 0 10px 0; text-shadow: 0 4px 20px rgba(0,0,0,0.8); text-align: center; }
+        .brand-subtitle { color: #ffffff; font-size: 11px; font-weight: 700; letter-spacing: 3px; margin: 0; text-transform: uppercase; opacity: 0.9; background: rgba(255,255,255,0.08); padding: 8px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
         
-        /* Garis Loading Modern (Progress Bar) */
-        .loading-bar-container { width: 160px; height: 3px; background: rgba(255,255,255,0.1); border-radius: 10px; margin-top: 40px; overflow: hidden; position: relative; }
-        .loading-bar { width: 0%; height: 100%; background: linear-gradient(90deg, #facc15, #fef08a); border-radius: 10px; animation: loadProgress 1.8s ease-in-out forwards; box-shadow: 0 0 10px rgba(250, 204, 21, 0.8); }
+        /* Garis Loading Modern (Progress Bar Glowing) */
+        .loading-bar-container { width: 180px; height: 4px; background: rgba(255,255,255,0.05); border-radius: 10px; margin-top: 50px; overflow: hidden; position: relative; box-shadow: inset 0 1px 3px rgba(0,0,0,0.3); }
+        .loading-bar { width: 0%; height: 100%; background: linear-gradient(90deg, transparent, #facc15, #fef08a); border-radius: 10px; animation: loadProgress 2s cubic-bezier(0.4, 0, 0.2, 1) forwards; box-shadow: 0 0 15px rgba(250, 204, 21, 0.8); }
 
         /* Keyframes Animasi */
         @keyframes spinRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes breatheLogo { 0%, 100% { transform: scale(1); filter: brightness(1); } 50% { transform: scale(1.05); filter: brightness(1.1); } }
-        @keyframes slideUpFade { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
-        @keyframes loadProgress { 0% { width: 0%; } 50% { width: 70%; } 100% { width: 100%; } }
+        @keyframes spinRingReverse { 0% { transform: rotate(360deg); } 100% { transform: rotate(0deg); } }
+        @keyframes breatheLogo { 0%, 100% { transform: scale(1); filter: brightness(1); } 50% { transform: scale(1.03); filter: brightness(1.15); } }
+        @keyframes slideUpFade { 0% { opacity: 0; transform: translateY(40px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes loadProgress { 0% { width: 0%; } 60% { width: 80%; } 100% { width: 100%; } }
         .fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
 
         /* =========================================
@@ -67,22 +70,44 @@
         iframe { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; border: none; display: block; z-index: 1; background-color: #f8fafc; }
 
         /* =========================================
-           3. BANNER INSTALL (GAYA iOS GLASSMORPHISM)
+           3. BANNER INSTALL & UPDATE (TRUE GLASSMORPHISM)
            ========================================= */
-        #installBanner { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 92%; max-width: 400px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 16px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); z-index: 10000; justify-content: space-between; align-items: center; box-sizing: border-box; border: 1px solid rgba(255,255,255,0.5); animation: popUpBanner 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        .banner-kiri { display: flex; align-items: center; gap: 12px; }
-        .banner-kiri img { width: 50px; height: 50px; border-radius: 14px; object-fit: cover; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); border: 1px solid rgba(0,0,0,0.05); }
-        .banner-teks h6 { margin: 0 0 4px 0; font-size: 1.1rem; color: #0f172a; font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif; }
-        .banner-teks small { color: #64748b; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-        #btnInstall { background: linear-gradient(135deg, #064e3b, #047857); color: #facc15; border: none; padding: 10px 22px; border-radius: 14px; font-weight: 800; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(6, 78, 59, 0.3); font-family: 'Plus Jakarta Sans', sans-serif; }
-        #btnInstall:active { transform: scale(0.95); }
-        #btnTutupBanner { position: absolute; top: -10px; right: -10px; background: #ffffff; color: #94a3b8; border: 1px solid #e2e8f0; border-radius: 50%; width: 28px; height: 28px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: color 0.2s; }
-        #btnTutupBanner:hover { color: #ef4444; }
+        /* UPGRADE: Tambahan margin aman untuk iPhone modern di bagian bawah */
+        .premium-banner {
+            display: none; position: fixed; left: 50%; transform: translateX(-50%); width: 92%; max-width: 400px;
+            z-index: 10001; align-items: center; justify-content: space-between; box-sizing: border-box;
+            border-radius: 24px; padding: 16px;
+            bottom: calc(20px + env(safe-area-inset-bottom));
+            animation: popUpBanner 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
 
-        /* =========================================
-           4. WADAH POP-UP UPDATE (PREMIUM CARD)
-           ========================================= */
-        #wadahUpdateAplikasi { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 92%; max-width: 400px; z-index: 10001; background: linear-gradient(135deg, #022c22 0%, #064e3b 100%); border: 1px solid rgba(250, 204, 21, 0.5); border-radius: 20px; padding: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.4); flex-direction: row; align-items: center; justify-content: space-between; animation: popUpBanner 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); box-sizing: border-box; }
+        #installBanner {
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), inset 0 1px 1px rgba(255,255,255,1);
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+
+        #wadahUpdateAplikasi {
+            background: rgba(6, 78, 59, 0.9); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .banner-kiri { display: flex; align-items: center; gap: 14px; }
+        .banner-kiri img { width: 50px; height: 50px; border-radius: 14px; object-fit: cover; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); border: 1px solid rgba(0,0,0,0.05); }
+        .banner-teks h6 { margin: 0 0 2px 0; font-size: 1.1rem; color: #0f172a; font-weight: 800; }
+        .banner-teks small { color: #64748b; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .btn-action { 
+            border: none; padding: 10px 22px; border-radius: 14px; font-weight: 800; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease; font-family: 'Plus Jakarta Sans', sans-serif; 
+        }
+        #btnInstall { background: linear-gradient(135deg, #064e3b, #047857); color: #facc15; box-shadow: 0 4px 15px rgba(6, 78, 59, 0.3); }
+        #btnRefreshUpdate { background: linear-gradient(135deg, #facc15, #eab308); color: #022c22; box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3); }
+        .btn-action:active { transform: scale(0.95); }
+
+        .btn-close-banner { position: absolute; top: -10px; right: -10px; background: #ffffff; color: #64748b; border: 1px solid #e2e8f0; border-radius: 50%; width: 30px; height: 30px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: color 0.2s; }
+        .btn-close-banner:hover { color: #ef4444; }
+
         @keyframes popUpBanner { 0% { transform: translate(-50%, 100%) scale(0.9); opacity: 0; } 100% { transform: translate(-50%, 0) scale(1); opacity: 1; } }
     </style>
 </head>
@@ -92,6 +117,7 @@
         <div class="splash-content">
             <div class="logo-wrapper">
                 <div class="modern-spinner"></div> 
+                <div class="modern-spinner-inner"></div>
                 <img src="./logo.png" alt="Logo Musholla" class="splash-logo">
             </div>
             <h2 class="brand-title">MUSHOLLA NURUL HAQ</h2>
@@ -105,8 +131,8 @@
     
     <iframe id="appFrame" allow="camera; microphone; fullscreen"></iframe>
 
-    <div id="installBanner">
-        <button id="btnTutupBanner" onclick="document.getElementById('installBanner').style.display='none'">✕</button>
+    <div id="installBanner" class="premium-banner">
+        <button class="btn-close-banner" onclick="document.getElementById('installBanner').style.display='none'">✕</button>
         <div class="banner-kiri">
             <img src="./logo.png" alt="Logo">
             <div class="banner-teks">
@@ -114,26 +140,24 @@
                 <small>Super App Jamaah</small>
             </div>
         </div>
-        <button id="btnInstall">Install</button>
+        <button id="btnInstall" class="btn-action">Install</button>
     </div>
 
-    <div id="wadahUpdateAplikasi">
+    <div id="wadahUpdateAplikasi" class="premium-banner">
         <div style="display: flex; align-items: center; gap: 14px;">
-            <div style="background: rgba(250, 204, 21, 0.15); color: #facc15; width: 40px; height: 40px; border-radius: 12px; display: flex; justify-content: center; align-items: center; font-weight: bold; font-size: 20px; border: 1px solid rgba(250, 204, 21, 0.3);">
+            <div style="background: rgba(250, 204, 21, 0.15); color: #facc15; width: 44px; height: 44px; border-radius: 14px; display: flex; justify-content: center; align-items: center; font-weight: bold; font-size: 22px; border: 1px solid rgba(250, 204, 21, 0.3);">
                 ↻
             </div>
             <div>
-                <h6 style="margin: 0 0 2px 0; color: #fff; font-size: 15px; font-weight: 800;">Update Tersedia!</h6>
-                <span style="color: rgba(255,255,255,0.7); font-size: 12px; font-weight: 600;">Versi terbaru siap digunakan.</span>
+                <h6 style="margin: 0 0 2px 0; color: #fff; font-size: 15px; font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif;">Update Tersedia!</h6>
+                <span style="color: rgba(255,255,255,0.8); font-size: 12px; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif;">Versi terbaru siap digunakan.</span>
             </div>
         </div>
-        <button id="btnRefreshUpdate" style="background: linear-gradient(135deg, #facc15, #eab308); color: #022c22; border: none; border-radius: 12px; padding: 10px 18px; font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 4px 10px rgba(250, 204, 21, 0.3); font-family: 'Plus Jakarta Sans', sans-serif;">
-            Update
-        </button>
+        <button id="btnRefreshUpdate" class="btn-action">Update</button>
     </div>
     
     <script>
-        // 1. Injeksi Google Script Iframe
+        // 1. Injeksi Google Script Iframe (Tetap Aman)
         const gasUrl = "https://script.google.com/macros/s/AKfycbxUkj-y3mppSeFACvJ-MVCELHw7P1VyFaCabxpj8q16UIL-SQaKO8ReoW23OuyuOGaH/exec";
         const params = window.location.search; 
         const waktuSekarang = new Date().getTime(); 
@@ -196,15 +220,24 @@
             deferredPrompt = null;
         });
 
-        // 4. Fungsi Penutup Splash Screen Mulus
+        // 4. FUNGSI PENUTUP SPLASH SCREEN MULUS & AMAN (FAILSAFE)
         const appFrame = document.getElementById('appFrame');
         const splash = document.getElementById('splash-screen');
+        let splashTelahDitutup = false;
 
+        function tutupSplash() {
+            if (splashTelahDitutup) return;
+            splashTelahDitutup = true;
+            splash.classList.add('fade-out');
+        }
+
+        // Tunggu Iframe selesai dimuat (plus jeda sedikit agar garis emas penuh)
         appFrame.onload = function() {
-            setTimeout(() => {
-                splash.classList.add('fade-out');
-            }, 1800); // Diberi waktu sedikit lebih lama agar animasi garis emasnya selesai sempurna
+            setTimeout(tutupSplash, 2000); 
         };
+
+        // KUNCI PENGAMAN: Jika server lambat, paksa buka dalam 8 detik
+        setTimeout(tutupSplash, 8000);
     </script>
 </body>
 </html>
